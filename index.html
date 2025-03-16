@@ -68,6 +68,10 @@
             align-items: center;
             gap: 10px;
         }
+        #visit-counter {
+            margin-top: 20px;
+            font-size: 18px;
+        }
         @media (max-width: 600px) {
             body {
                 font-size: 12px;
@@ -94,6 +98,7 @@
     <div id="home" class="container">
         <h1>Welcome to Corroded SMP</h1>
         <p>Made by NotLilBeast</p>
+        <p id="visit-counter"></p>
     </div>
 
     <div id="whitelisted" class="container hidden">
@@ -146,6 +151,15 @@
             }
             document.getElementById(`btn-${sectionId}`).classList.add('active');
         }
+
+        function updateVisitCounter() {
+            let visits = localStorage.getItem('visitCount') || 0;
+            visits++;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visit-counter').textContent = `Site Visits: ${visits}`;
+        }
+
+        updateVisitCounter();
     </script>
 </body>
 </html>
